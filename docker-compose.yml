@@ -1,0 +1,24 @@
+version: '3.3'
+networks:
+  web:
+   external: true
+services:
+    backend:
+        image: poc:latest
+        container_name: poc
+        volumes:
+          - ./config.yaml:/home/jimbo/config.yaml
+        extra_hosts:
+          - "host.docker.internal:172.17.0.1"
+        networks:
+          - web
+        labels:
+          - traefik.enable=true
+          - traefik.http.routers.poc-https.entrypoints=websecure
+          - traefik.http.routers.poc-https.middlewares=poc-compress
+          - traefik.http.routers.poc-https.rule=Host(`YOURDOMAIN`)
+          - traefik.http.routers.poc-https.tls=true
+          - traefik.http.routers.poc-https.tls.certresolver=lets-encrypt
+          - traefik.http.routers.poc-https.service=poc
+          - traefik.http.services.poc.loadbalancer.server.port=3000
+          - traefik.http.middlewares.poc-compress.compress=true

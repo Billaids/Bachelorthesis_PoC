@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "poc"
+version = "0.1.0"
+description = ""
+authors = ["Jimmy Nelle <jimmy.nelle@hsw-stud.de>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+repository = ""
+documentation = ""
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = {version = "^0.64.0", extras = ["all"]}
+loguru = "^0.5.3"
+pydantic = "^1.8.1"
+PyYAML = "^5.4.1"
+motor = "^2.4.0"
+uvicorn = "^0.13.4"
+click = "^7.1.2"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.5.7"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"

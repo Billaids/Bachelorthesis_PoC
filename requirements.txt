@@ -1,0 +1,9 @@
+fastapi[all]
+loguru
+uvloop
+ujson
+pydantic
+pyyaml
+pymongo
+motor
+uvicorn
